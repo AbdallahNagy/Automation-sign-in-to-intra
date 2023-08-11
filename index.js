@@ -27,7 +27,6 @@ program.command('signin')
 program.parse();
 function signInAction(options) {
     (() => __awaiter(this, void 0, void 0, function* () {
-        console.log('d');
         const emailInputSelector = '#txtUser';
         const passwordInputSelector = '#txtPass';
         const loginBtnSelector = '#btnLogin';

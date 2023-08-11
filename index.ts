@@ -18,9 +18,8 @@ program.command('signin')
 
 program.parse();
     
-function signInAction(options: signInOptions) : void {
+function signInAction(options: signInOptions): void {
     (async () => {
-        console.log('d');
         const emailInputSelector = '#txtUser'
         const passwordInputSelector = '#txtPass'
         const loginBtnSelector = '#btnLogin'
