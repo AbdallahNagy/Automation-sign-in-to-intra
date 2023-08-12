@@ -1,4 +1,4 @@
-import signInOptions from './signInOptions';
+import signInOptions from './signInOptions.js';
 
 import { Command } from 'commander';
 import puppeteer from 'puppeteer';
@@ -12,14 +12,14 @@ program
 
 program.command('signin')
     .description('Provide email and password to automatically sign in to intra')
-    .option('-e, --email <type>', 'Enter your intra email address') // mandatory
-    .option('-p, --password [char]', 'Enter your intra password') // optional
+    .option('-e, --email <type>', 'Enter your intra email address')
+    .option('-p, --password <type>', 'Enter your intra password')
     .action(signInAction)
 
 program.parse();
     
-function signInAction(options: signInOptions): void {
-    (async () => {
+async function signInAction(options: signInOptions): Promise<void> {
+    try{
         const emailInputSelector = '#txtUser'
         const passwordInputSelector = '#txtPass'
         const loginBtnSelector = '#btnLogin'
@@ -37,7 +37,10 @@ function signInAction(options: signInOptions): void {
         // wait untill navigating to intra main page
         await page.waitForNavigation();
 
-
         // await page.click(signInSelector)
-    })
+        await browser.close();
+    } catch(err) {
+        console.log(err);
+        
+    }
 }
